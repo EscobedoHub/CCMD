@@ -79,8 +79,36 @@ void PhoneToUniqueId(char *UID,char *PN)
     }
 
 }
+
+//**********************************************************************//
+void UserPromptInit(void)
+{
+//This is the initialization prompt for the user
+    printf("Welcome to the CCMD: Customer Contact Management Database\n\n");
+
+//***This is a sample prompt*** Must be replaced by true console menu options # 0-9
+
+    printf("\nEnter a phone number:\n");                                //Prompt the user for a phone number
+    fgets(PhoneNumber,PHONEBUFFER,stdin);                               //Reads one less char limited by PHONEBUFFER from stream
+                                                                        //stores them into the buffer pointed to by PhoneNumber
+
+    //***Next Line only used for development*** MUST REMOVE
+    printf("\nThis is your phone number: %s\n",PhoneNumber);            //Re-print the phone number contained in the phone buffer
+
+    //***Next Loop only used for development*** MUST REMOVE
+    for(int i = 0;i<sizeof(PhoneNumber);i++)
+    {
+        printf("\npointer = %p",(ptrPN+i));
+        printf("\t\tvalue = %c", *(ptrPN+i));
+    }
+}
+
+
+
 int main(char argc, char* argv[])
 {
-	printf("Skeleton");
+    UserPromptInit();
+    PhoneToUniqueId(ptrUID,ptrPN);
+    return 0;
 }
 
