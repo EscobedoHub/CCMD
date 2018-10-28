@@ -34,8 +34,52 @@
 
 #include <stdio.h>
 #include <stddef.h>
+#include <string.h>
 
-int main()
+
+//Global MACRO's
+#define PHONEBUFFER 11                                          	//SIZE OF THE PHONEBUFFER, 10 digits plus 1 extra for fgets/printf string requirement
+#define UIDBUFFER    8												//SIZE OF THE UIDBUFFER, 7 digits plus 1 extra for fgets/printf string requirement
+
+//Global Variable Definitions/Initializations
+int koffset = 0;
+char PhoneNumber[PHONEBUFFER];
+char UniqueID[UIDBUFFER];
+
+//Global Pointer Definitions/Initializations;
+char *ptrUID  = &UniqueID[0];
+char *ptrPN   = &PhoneNumber[0];
+
+//Function prototypes
+
+//PhoneToUniqueID: Converts phone number to unique id value
+void PhoneToUniqueId(char *UID,char *PN)
+{
+//POINTER ARGUMENTS: UID --> UniqueID  & PB --> PhoneBuffer
+
+//Intialize UniqueID index # 7 to EOL character '\0', forces printf to terminate line after printing id
+*(UID + 7) = '\0';
+
+//Loop through phone number buffer to extract area code and last 4 digits (973)897-8742 --> unique id = 9738742
+    for(int j = 0; j<UIDBUFFER-1;j++)
+    {
+        *(UID + j) = *(PN+j+koffset);                                   //koffset = 0 initially , koffset = 3 when pointer reaches 4th digit in phone number
+        if(j==2)                                                        //4th digit of phone number = index value # 3
+        {
+            koffset=3;                                                  //Initiate offset to forward pointer to 7th digit
+        }
+    }
+
+    printf("\n\nThis is your unique ID number: %s\n\n",(UID));          //***This Line only used for development*** MUST REMOVE
+
+    for(int i = 0;i <UIDBUFFER-1;i++)                               	//***This Line only used for development*** MUST REMOVE
+    {
+        printf("\npointer = %p",(UID+i));                               //***This Line only used for development*** MUST REMOVE
+        printf("\t\tvalue = %c", *(UID+i));                             //***This Line only used for development*** MUST REMOVE
+    }
+
+}
+int main(char argc, char* argv[])
 {
 	printf("Skeleton");
 }
