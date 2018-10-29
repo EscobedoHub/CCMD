@@ -88,6 +88,7 @@ void UserPromptInit(void)
 
 //***This is a sample prompt*** Must be replaced by true console menu options # 0-9
 
+
     printf("\nEnter a phone number:\n");                                //Prompt the user for a phone number
     fgets(PhoneNumber,PHONEBUFFER,stdin);                               //Reads one less char limited by PHONEBUFFER from stream
                                                                         //stores them into the buffer pointed to by PhoneNumber
