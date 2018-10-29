@@ -96,7 +96,7 @@ void UserPromptInit(void)
     printf("\nThis is your phone number: %s\n",PhoneNumber);            //Re-print the phone number contained in the phone buffer
 
     //***Next Loop only used for development*** MUST REMOVE
-    for(int i = 0;i<sizeof(PhoneNumber);i++)
+    for(int i = 0;i<sizeof(PhoneNumber)-1;i++)
     {
         printf("\npointer = %p",(ptrPN+i));
         printf("\t\tvalue = %c", *(ptrPN+i));
@@ -109,6 +109,20 @@ int main(char argc, char* argv[])
 {
     UserPromptInit();
     PhoneToUniqueId(ptrUID,ptrPN);
-    return 0;
-}
+
+    char eol;
+
+    printf("\nDo you want to end? (Press Return): ");
+
+    while(scanf("%c",&eol)>0)
+	{
+	    scanf("%c", &eol);
+	    if(eol == '\n')
+        	{
+            	break;
+        	}
+	}
+
+	return 0;
+    }
 
