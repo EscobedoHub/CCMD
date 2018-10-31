@@ -7,6 +7,8 @@ PURPOSE: Store and manage customer contact information in a dynamically accessed
 
 IMPLEMENTATION DESCRIPTION: LINKED-LIST
 
+[Foo](#foo)
+
 CUSTOM HEADER FILES:
 
 VARIABLES & POINTERS:
@@ -15,3 +17,4 @@ FUNCTIONS:
 
 
 
+# Foo
