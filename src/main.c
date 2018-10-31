@@ -42,7 +42,7 @@
 #define UIDBUFFER    8												//SIZE OF THE UIDBUFFER, 7 digits plus 1 extra for fgets/printf string requirement
 
 //Global Variable Definitions/Initializations
-int koffset = 0;
+int  PNoffset = 0;                                                  //Phone number offset used to calculate UID
 char PhoneNumber[PHONEBUFFER];
 char UniqueID[UIDBUFFER];
 
@@ -63,10 +63,10 @@ void PhoneToUniqueId(char *UID,char *PN)
 //Loop through phone number buffer to extract area code and last 4 digits (973)897-8742 --> unique id = 9738742
     for(int j = 0; j<UIDBUFFER-1;j++)
     {
-        *(UID + j) = *(PN+j+koffset);                                   //koffset = 0 initially , koffset = 3 when pointer reaches 4th digit in phone number
+        *(UID + j) = *(PN+j+PNoffset);                                   //koffset = 0 initially , koffset = 3 when pointer reaches 4th digit in phone number
         if(j==2)                                                        //4th digit of phone number = index value # 3
         {
-            koffset=3;                                                  //Initiate offset to forward pointer to 7th digit
+            PNoffset=3;                                                  //Initiate offset to forward pointer to 7th digit
         }
     }
 
