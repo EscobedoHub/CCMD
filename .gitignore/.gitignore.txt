@@ -1,2 +1,3 @@
 executable/
 .gitignore/
+*.exe
